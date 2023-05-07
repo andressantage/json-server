@@ -16,21 +16,21 @@ const opc = {
 }
 // config.body = JSON.stringify();
 let config = {
-    headers:new Headers({//espera que el API le envuelva un JSON // para decirle que la informacion que le va a mandar es json
-        "Content-Type": "application/json"
+    headers:new Headers({
+        "Content-Type": "application/json"//espera que el API o servidor le devuelva un JSON // es para decirle que la informacion que le va a mandar es json
     }), 
 };
 const getUserAll = async()=>{
     config.method = "GET";//para designar el metodo que se ejecutara
     let res = await ( await fetch("http://localhost:4001/usuarios",config)).json();//await es para esperar que algo suceda
-    //.json() convierte el archivo a json// 
+    //.json() convierte el archivo a json
     console.log(res);
 }
 const postUser = async(data)=>{
     config.method = "POST";
-    config.body = JSON.stringify(data);//config.body = JSON.stringify(data) // convierte un objeto literal en json
+    config.body = JSON.stringify(data);// JSON.stringify(data) es para converitr un objeto literal en json, en este caso le pone ese json en config.body
     let res = await ( await fetch("http://localhost:4001/usuarios",config)).json();
-    console.log(res);
+    console.log(res);//para que aparezca en la consola
 }
 const putUser = async(data)=>{
     config.method = "PUT";
